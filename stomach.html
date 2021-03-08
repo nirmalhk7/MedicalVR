@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Hello, World! - A-Frame</title>
+    <meta name="description" content="Hello, World! - A-Frame" />
+    <script src="https://aframe.io/releases/0.8.2/aframe.js"></script>
+  </head>
+
+  <body>
+    <a-scene wasd-controls="acceleration: 1000" cursor="rayOrigin: mouse" background="color: #000000">
+      <a-assets>
+        <a-asset-item
+          id="heart-obj"
+          src="assets/stomach/stomach.obj"
+        ></a-asset-item>
+        <a-asset-item
+          id="heart-mtl"
+          src="assets/stomach/stomach.mtl"
+        ></a-asset-item>
+      </a-assets>
+      <a-obj-model
+        position="0 0 -50"
+        src="#heart-obj"
+        mtl="#heart-mtl"
+      ></a-obj-model>
+
+      <a-link
+        title="Back Home"
+        href="index.html"
+        position="10 1.5 0"
+        rotation="0 90 0"
+        image="#thumbJapan"
+      ></a-link>
+      <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane> -->
+      <!-- <a-sky color="#ECECEC"></a-sky> -->
+    </a-scene>
+  </body>
+</html>
