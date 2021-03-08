@@ -5,38 +5,66 @@
     <title>Hello, World! - A-Frame</title>
     <meta name="description" content="Hello, World! - A-Frame" />
     <script src="https://aframe.io/releases/0.8.2/aframe.js"></script>
-    
   </head>
 
   <body>
     <!-- <a-entity> <a-camera look-controls-enabled wasd-controls-enabled></a-camera></a-entity> -->
-    <a-scene cursor="rayOrigin: mouse" >
+    <a-scene cursor="rayOrigin: mouse">
       <a-assets>
-      <img id="thumbJapan" crossOrigin="anonymous" src="https://cdn.aframe.io/link-traversal/thumbs/japan.png">
-      <img id="thumbEgypt" crossOrigin="anonymous" src="https://cdn.aframe.io/link-traversal/thumbs/egypt.png">
-      <img id="thumbForest" crossOrigin="anonymous" src="https://cdn.aframe.io/link-traversal/thumbs/forest.png">
-
-     </a-assets>
+        <img
+          id="thumbJapan"
+          crossorigin="anonymous"
+          src="https://cdn.aframe.io/link-traversal/thumbs/japan.png"
+        />
+        <img
+          id="thumbEgypt"
+          crossorigin="anonymous"
+          src="https://cdn.aframe.io/link-traversal/thumbs/egypt.png"
+        />
+        <img
+          id="thumbForest"
+          crossorigin="anonymous"
+          src="https://cdn.aframe.io/link-traversal/thumbs/forest.png"
+        />
+      </a-assets>
 
       <!-- <a-entity position="-2 1.5 -5" link="highlighted: true; highlightedColor:white; backgroundColor: red; href: https://schatzkin.com; titleColor: white; title: Back to website;image: #thumbJapan  "></a-entity> -->
       <a-link
-      title="Heart"
-      href="brain.html"
-      position="0 1.5 -5"
-      image="#thumbEgypt"
-    ></a-link>
-    <a-link
-    title="Shelby"
-    href="shelby.html"
-    position="3 1.5 -5"
-    image="#thumbForest"
-  ></a-link>
-    <a-link
-    title="Skeletons"
-    href="brain.html"
-    position="-3 1.5 -5"
-    image="#thumbJapan"
-  ></a-link>
+        title="Brain"
+        href="brain.html"
+        position="0 3.5 -5"
+        image="#thumbEgypt"
+      ></a-link>
+      <a-link
+        title="Stomach"
+        href="shelby.html"
+        position="3 3.5 -5"
+        image="#thumbForest"
+      ></a-link>
+      <a-link
+        title="Skeletons"
+        href="brain.html"
+        position="-3 3.5 -5"
+        image="#thumbJapan"
+      ></a-link>
+      <a-link
+        title="Heart"
+        href="brain.html"
+        position="0 0.5 -5"
+        image="#thumbEgypt"
+      ></a-link>
+      <a-link
+        title="1967 Shelby Ford Mustang"
+        href="shelby.html"
+        position="3 0.5 -5"
+        image="#thumbForest"
+      ></a-link>
+      <a-link
+        title="Skeletons"
+        href="brain.html"
+        position="-3 0.5 -5"
+        image="#thumbJapan"
+      ></a-link>
       <a-sky color="black"></a-sky>
       <a-entity id="leftHand" link-controls="hand: left"></a-entity>
       <a-entity id="rightHand" link-controls="hand: right"></a-entity>
@@ -48,6 +76,8 @@
     </a-scene>
   </body>
   <script>
-    let redirectfn = (e) => { console.log(e) }
+    let redirectfn = (e) => {
+      console.log(e);
+    };
   </script>
 </html>
