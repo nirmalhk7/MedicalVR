@@ -1,36 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-    <title>Hello!</title>
-
-    <!-- import the webpage's stylesheet -->
-    <link rel="stylesheet" href="/style.css" />
-
-    <!-- import the webpage's javascript file -->
-    <script src="/script.js" defer></script>
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <style>
-      #video-holder {
-        width: 100vw;
-        height: 100vh;
-      }
-
-      video {
-        height: 100vh;
-        width: 100vw;
-      }
-    </style>
+    <title>Hello, World! - A-Frame</title>
+    <meta name="description" content="Hello, World! - A-Frame" />
+    <script src="https://aframe.io/releases/0.8.2/aframe.js"></script>
   </head>
-  <body>
-    <div id="video-holder">
-      <video autoplay></video>
-    </div>
 
-    <a-scene renderer="colorManagement: true">
+  <body>
+    <!-- <a-entity> <a-camera look-controls-enabled wasd-controls-enabled></a-camera></a-entity> -->
+    <a-scene cursor="rayOrigin: mouse">
       <a-assets>
         <img
           id="thumbJapan"
@@ -48,12 +27,8 @@
           src="https://cdn.aframe.io/link-traversal/thumbs/forest.png"
         />
       </a-assets>
-      <a-entity
-        camera
-        look-controls="touchEnabled:false;"
-        position="0 1.6 0"
-      ></a-entity>
 
+      <!-- <a-entity position="-2 1.5 -5" link="highlighted: true; highlightedColor:white; backgroundColor: red; href: https://schatzkin.com; titleColor: white; title: Back to website;image: #thumbJapan  "></a-entity> -->
       <a-link
         title="Shelby Ford Mustang 1967"
         href="shelby.html"
@@ -105,28 +80,28 @@
         image="#thumbForest"
       ></a-link>
 
-      <a-link
-        title="Skeletons 2"
-        href="skeleton2.html"
-        position="6 0.5 -5"
-        image="#thumbForest"
-      ></a-link>
 
+      <a-link
+      title="Skeletons 2"
+      href="skeleton2.html"
+      position="6 0.5 -5"
+      image="#thumbForest"
+    ></a-link>
+
+
+      <a-sky color="black"></a-sky>
       <a-entity id="leftHand" link-controls="hand: left"></a-entity>
       <a-entity id="rightHand" link-controls="hand: right"></a-entity>
+      <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
+      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
+      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
+      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane> -->
+      <!-- <a-sky color="#ECECEC"></a-sky> -->
     </a-scene>
   </body>
   <script>
-    const constraints = {
-      video: {
-        facingMode: "environment",
-      },
+    let redirectfn = (e) => {
+      console.log(e);
     };
-
-    const video = document.querySelector("video");
-
-    navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
-      video.srcObject = stream;
-    });
   </script>
 </html>
