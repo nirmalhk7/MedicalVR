@@ -45,9 +45,9 @@
       <a-entity camera look-controls position="0 1.6 0" wasd-controls>
         <a-entity
           position="0 0 -3"
-          geometry="primitive: ring; radiusInner: 0.2; radiusOuter: 0.3;"
+          geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.1;"
           material="color: green; shader: flat"
-          cursor="maxDistance: 30; fuse: false; fuse-timeout:5000"
+          cursor="maxDistance: 30; fuse: true; fuse-timeout:5000"
         >
           <a-animation
             begin="click"
@@ -140,15 +140,12 @@
     </a-scene>
   </body>
   <script>
-    const constraints = {
+    const video = document.querySelector("video");
+    navigator.mediaDevices.getUserMedia({
       video: {
         facingMode: "environment",
       },
-    };
-
-    const video = document.querySelector("video");
-
-    navigator.mediaDevices.getUserMedia(constraints).then((stream) => {
+    }).then((stream) => {
       video.srcObject = stream;
     });
   </script>
