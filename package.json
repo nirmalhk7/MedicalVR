@@ -4,12 +4,13 @@
   "version": "0.3.0",
   "license": "MIT",
   "scripts": {
-    "start": "budo --live --verbose --port 3000 --open --ssl",
+    "start": "budo --live --verbose --ssl ",
     "deploy": "ghpages",
-    "ghpages": "ghpages"
+    "ghpages": "ghpages",
+    "watchman": "aframe-watcher"
   },
   "devDependencies": {
-    "budo": "^7.0.0",
+    "budo": "11.6.4",
     "ghpages": "0.0.3"
   },
   "keywords": [
