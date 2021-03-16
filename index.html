@@ -47,7 +47,7 @@
           position="0 0 -3"
           geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.1;"
           material="color: green; shader: flat"
-          cursor="maxDistance: 30; fuse: true; fuse-timeout:5000"
+          cursor="maxDistance: 30; fuse: false; fuse-timeout:5000"
         >
           <a-animation
             begin="click"
@@ -131,12 +131,19 @@
       ></a-link>
 
       <a-link
-        title="Skeletons 2"
+        title="Mario Kart"
         href="skeleton2.html"
         position="5 0.5 0"
         rotation="30 90 0"
         image="#thumbForest"
       ></a-link>
+      <a-link
+      title="Skeletons 2"
+      href="skeleton2.html"
+      position="5 3.5 0"
+      rotation="-30 90 0"
+      image="#thumbForest"
+    ></a-link>
     </a-scene>
   </body>
   <script>
