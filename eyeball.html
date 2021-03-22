@@ -33,7 +33,7 @@
         background: green;
       "
     >
-      <h4>HCI PROJECT</h4>
+      <h4>Eyeball- HCI PROJECT</h4>
       <br />
       Made by: Nirmal Khedkar,
       <br />
@@ -46,7 +46,7 @@
           position="0 0 -3"
           geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.1;"
           material="color: green; shader: flat"
-          cursor="maxDistance: 30; fuse: true; fuse-timeout:5000"
+          cursor="maxDistance: 30; fuse: false; fuse-timeout:5000"
         >
           <a-animation
             begin="click"
@@ -78,11 +78,17 @@
           src="assets/Eyeball/eyeball.mtl"
         ></a-asset-item>
       </a-assets>
-      <a-obj-model
-        position="0 0 -10"
-        src="#heart-obj"
-        mtl="#heart-mtl"
-      ></a-obj-model>
+
+      <a-entity>
+        <a-obj-model
+          position="0 0 -10"
+          src="#heart-obj"
+          animation="property: rotation; loop: true"
+          mtl="#heart-mtl"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
+        ></a-obj-model>
+      </a-entity>
+
       <a-link
         title="Back Home"
         href="index.html"

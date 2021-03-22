@@ -23,7 +23,22 @@
     <div id="video-holder">
       <video autoplay></video>
     </div>
-
+    <div
+      style="
+        color: white;
+        padding: 1em;
+        position: fixed;
+        top: 0;
+        background: green;
+      "
+    >
+      <h4>HCI PROJECT: Index Page</h4>
+      <br />
+      Made by: Nirmal Khedkar,
+      <br />
+      Karthik Kotla Reddy <br />
+      Adarsh Naidu
+    </div>
     <a-scene>
       <a-assets>
         <img
@@ -138,22 +153,24 @@
         image="#thumbForest"
       ></a-link>
       <a-link
-      title="Skeletons 2"
-      href="skeleton2.html"
-      position="5 3.5 0"
-      rotation="-30 90 0"
-      image="#thumbForest"
-    ></a-link>
+        title="Skeletons 2"
+        href="skeleton2.html"
+        position="5 3.5 0"
+        rotation="-30 90 0"
+        image="#thumbForest"
+      ></a-link>
     </a-scene>
   </body>
   <script>
     const video = document.querySelector("video");
-    navigator.mediaDevices.getUserMedia({
-      video: {
-        facingMode: "environment",
-      },
-    }).then((stream) => {
-      video.srcObject = stream;
-    });
+    navigator.mediaDevices
+      .getUserMedia({
+        video: {
+          facingMode: "environment",
+        },
+      })
+      .then((stream) => {
+        video.srcObject = stream;
+      });
   </script>
 </html>

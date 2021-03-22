@@ -1,14 +1,73 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Hello, World! - A-Frame</title>
-    <meta name="description" content="Hello, World! - A-Frame" />
-    <script src="https://aframe.io/releases/0.8.2/aframe.js"></script>
-  </head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
 
+    <title>HCI Project</title>
+
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <style>
+      #video-holder {
+        width: 100vw;
+        height: 100vh;
+        background-color: black;
+      }
+
+      video {
+        height: 100vh;
+      }
+    </style>
+  </head>
   <body>
-    <a-scene cursor="rayOrigin: mouse" background="color: #000000">
+    <div id="video-holder">
+      <video autoplay onvolumechange="pressedButton()"></video>
+    </div>
+    <div
+      style="
+        color: white;
+        padding: 1em;
+        position: fixed;
+        top: 0;
+        background: green;
+      "
+    >
+      <h4>Skeleton HCI PROJECT</h4>
+      <br />
+      Made by: Nirmal Khedkar,
+      <br />
+      Karthik Kotla Reddy <br />
+      Adarsh Naidu
+    </div>
+    <a-scene>
+      <a-entity camera look-controls position="0 1.6 0" wasd-controls>
+        <a-entity
+          position="0 0 -3"
+          geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.1;"
+          material="color: green; shader: flat"
+          cursor="maxDistance: 30; fuse: true; fuse-timeout:5000"
+        >
+          <a-animation
+            begin="click"
+            easing="ease-out"
+            attribute="scale"
+            fill="forwards"
+            from="0.2 0.2 0.2"
+            to="1 1 1"
+            dur="150"
+          ></a-animation>
+          <a-animation
+            begin="fusing"
+            easing="ease-in"
+            attribute="scale"
+            fill="backwards"
+            from="1 1 1"
+            to="0.2 0.2 0.2"
+            dur="1500"
+          ></a-animation>
+        </a-entity>
+      </a-entity>
       <a-assets>
         <a-asset-item
           id="heart-obj"
@@ -20,7 +79,8 @@
         ></a-asset-item>
       </a-assets>
       <a-obj-model
-        position="0 0 -5"
+        position="0 0 -10"
+        rotation="0 0 0"
         src="#heart-obj"
         mtl="#heart-mtl"
       ></a-obj-model>
@@ -32,11 +92,18 @@
         rotation="0 90 0"
         image="#thumbJapan"
       ></a-link>
-      <!-- <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
-      <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
-      <a-cylinder position="1 0.75 -3" radius="0.5" height="1.5" color="#FFC65D"></a-cylinder>
-      <a-plane position="0 0 -4" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane> -->
-      <!-- <a-sky color="#ECECEC"></a-sky> -->
     </a-scene>
   </body>
+  <script>
+    const video = document.querySelector("video");
+    navigator.mediaDevices
+      .getUserMedia({
+        video: {
+          facingMode: "environment",
+        },
+      })
+      .then((stream) => {
+        video.srcObject = stream;
+      });
+  </script>
 </html>
