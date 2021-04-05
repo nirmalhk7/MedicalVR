@@ -8,6 +8,26 @@
     <title>HCI Project</title>
 
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <script src="https://unpkg.com/networked-aframe/dist/networked-aframe.min.js"></script>
+    <!-- Include naf-firebase-adapter *after* networked-aframe -->
+    <script src="https://unpkg.com/naf-firebase-adapter/dist/naf-firebase-adapter.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/7.13.1/firebase-database.js"></script>
+  
+    <!-- Set the Firebase credentials -->
+    <script>
+      window.firebaseConfig = {
+        apiKey: "AIzaSyAEgLnPwDZc63mUBb672fgVIRMb7hKSjM0",
+    authDomain: "medixvr.firebaseapp.com",
+    projectId: "medixvr",
+    storageBucket: "medixvr.appspot.com",
+    messagingSenderId: "132065297933",
+    appId: "1:132065297933:web:633ade15bc46d1e04bf744",
+    measurementId: "G-WC3V3K7HBE"
+      };
+    </script>
     <style>
       #video-holder {
         width: 100vw;
@@ -15,14 +35,14 @@
         background-color: black;
       }
 
-      video {
+      #bgvideo {
         height: 100vh;
       }
     </style>
   </head>
   <body>
     <div id="video-holder">
-      <video autoplay onvolumechange="pressedButton()"></video>
+      <video loop controls id='bgvideo' autoplay onvolumechange="pressedButton()"></video>
     </div>
     <div
       style="
@@ -40,7 +60,9 @@
       Karthik Kotla Reddy <br />
       Adarsh Naidu
     </div>
-    <a-scene>
+    <a-scene networked-scene="
+    adapter: firebase;
+    ">
       <a-entity camera look-controls position="0 1.6 0" wasd-controls>
         <a-entity
           position="0 0 -3"
@@ -48,41 +70,24 @@
           material="color: green; shader: flat"
           cursor="maxDistance: 30; fuse: true; fuse-timeout:5000"
         >
-          <a-animation
-            begin="click"
-            easing="ease-out"
-            attribute="scale"
-            fill="forwards"
-            from="0.2 0.2 0.2"
-            to="1 1 1"
-            dur="150"
-          ></a-animation>
-          <a-animation
-            begin="fusing"
-            easing="ease-in"
-            attribute="scale"
-            fill="backwards"
-            from="1 1 1"
-            to="0.2 0.2 0.2"
-            dur="1500"
-          ></a-animation>
         </a-entity>
       </a-entity>
       <a-assets>
+        <video id="video-src" autoplay="true" src="assets/demo.mp4"></video>
         <a-asset-item
-          id="heart-obj"
-          src="assets/brain/brain-simple-mesh.obj"
-        ></a-asset-item>
-        <a-asset-item
-          id="heart-mtl"
-          src="assets/brain/brain-simple-mesh.mtl"
-        ></a-asset-item>
+        id="heart-glb"
+        src="assets/brain/brain-simple-mesh.glb"
+      ></a-asset-item>
+      
       </a-assets>
-      <a-obj-model
-        position="0 0 -10"
-        src="#heart-obj"
-        mtl="#heart-mtl"
-      ></a-obj-model>
+      <a-entity position="0 0 -10" gltf-model="#heart-glb" modify-materials>
+        <a-animation attribute="rotation" dur="3000" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
+      </a-entity>
+      
+      <a-text value='Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+
+      The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.' rotation="0 180 0" position="0 1.5 10" color="white"></a-text>
+
       <a-link
         title="Back Home"
         href="index.html"
@@ -90,10 +95,13 @@
         rotation="0 90 0"
         image="#thumbJapan"
       ></a-link>
+      <a-video id="video-screen" src="#video-src"  position="-10 1.5 0" rotation="0 90 0"
+width="8" height="4.5">
+
     </a-scene>
   </body>
   <script>
-    const video = document.querySelector("video");
+    const video = document.getElementById("bgvideo");
     navigator.mediaDevices
       .getUserMedia({
         video: {
