@@ -74,15 +74,31 @@
       </a-entity>
       <a-assets>
         <video id="video-src" autoplay="true" src="assets/demo.mp4"></video>
-        <a-asset-item
+        <!-- <a-asset-item
         id="heart-glb"
         src="assets/brain/brain-simple-mesh.glb"
-      ></a-asset-item>
+      > -->
+      <a-asset-item
+      id="heart-obj"
+      src="assets/brain/brain-1.obj"
+    ></a-asset-item>
+    <a-asset-item
+      id="heart-mtl"
+      src="assets/brain/brain-1.mtl"
+    ></a-asset-item>
+    </a-asset-item>
       
       </a-assets>
-      <a-entity position="0 0 -10" gltf-model="#heart-glb" modify-materials>
+      <!-- <a-entity position="0 0 -10" gltf-model="#heart-glb" modify-materials>
         <a-animation attribute="rotation" dur="3000" to="0 360 0" repeat="indefinite" easing="linear"></a-animation>
-      </a-entity>
+      </a-entity> -->
+      <a-obj-model
+      position="0 0 -10"
+      src="#heart-obj"
+      animation="property: rotation; loop: true"
+      mtl="#heart-mtl"
+      animation="property: rotation; to: 0 360 0; loop: true; dur: 10000"
+    ></a-obj-model>
       
       <a-text value='Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
 
