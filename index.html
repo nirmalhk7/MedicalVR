@@ -12,6 +12,7 @@
       #video-holder {
         width: 100vw;
         height: 100vh;
+        background-color: black;
       }
 
       video {
@@ -21,7 +22,7 @@
   </head>
   <body>
     <div id="video-holder">
-      <video autoplay></video>
+      <video id="bgvideo" autoplay></video>
     </div>
     <div
       style="
@@ -163,7 +164,7 @@
   </body>
   <script>
    if( /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
- const video = document.getElementById("bgvideo");
+    const video = document.getElementById("bgvideo");
     navigator.mediaDevices
       .getUserMedia({
         video: {

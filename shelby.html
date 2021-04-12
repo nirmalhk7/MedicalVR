@@ -22,7 +22,7 @@
   </head>
   <body>
     <div id="video-holder">
-      <video autoplay onvolumechange="pressedButton()"></video>
+      <video loop controls id='bgvideo' autoplay onvolumechange="pressedButton()"></video>
     </div>
     <div
       style="
@@ -90,6 +90,7 @@
         href="index.html"
         position="10 1.5 0"
         rotation="0 90 0"
+        highlightedColor=‘#24CAFF’
         image="#thumbJapan"
       ></a-link>
       <a-video id="video-screen" src="#video-src"  position="-10 1.5 0" rotation="0 90 0"
@@ -97,7 +98,8 @@
     </a-scene>
   </body>
   <script>
-    const video = document.querySelector("video");
+   if( /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+    const video = document.getElementById("bgvideo");
     navigator.mediaDevices
       .getUserMedia({
         video: {
@@ -107,5 +109,6 @@
       .then((stream) => {
         video.srcObject = stream;
       });
+   }
   </script>
 </html>
