@@ -46,7 +46,7 @@
           position="0 0 -3"
           geometry="primitive: ring; radiusInner: 0.05; radiusOuter: 0.1;"
           material="color: green; shader: flat"
-          cursor="maxDistance: 30; fuse: true; fuse-timeout:5000"
+          cursor="maxDistance: 30; fuse: false; fuse-timeout:5000"
         >
           <a-animation
             begin="click"
@@ -105,7 +105,8 @@
     </a-scene>
   </body>
   <script>
-    const video = document.querySelector("video");
+   if( /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ const video = document.getElementById("bgvideo");
     navigator.mediaDevices
       .getUserMedia({
         video: {
@@ -115,5 +116,6 @@
       .then((stream) => {
         video.srcObject = stream;
       });
+   }
   </script>
 </html>

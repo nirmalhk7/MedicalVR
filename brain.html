@@ -117,7 +117,8 @@ width="8" height="4.5">
     </a-scene>
   </body>
   <script>
-    const video = document.getElementById("bgvideo");
+   if( /Android|webOS|iPhone|iPad|Mac|Macintosh|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+ const video = document.getElementById("bgvideo");
     navigator.mediaDevices
       .getUserMedia({
         video: {
@@ -127,5 +128,7 @@ width="8" height="4.5">
       .then((stream) => {
         video.srcObject = stream;
       });
+   }
+
   </script>
 </html>
